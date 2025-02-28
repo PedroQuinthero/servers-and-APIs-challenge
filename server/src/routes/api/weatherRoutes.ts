@@ -2,12 +2,21 @@ import { Router } from 'express';
 const router = Router();
 
 // import HistoryService from '../../service/historyService.js';
-// import WeatherService from '../../service/weatherService.js';
+import WeatherService from '../../service/weatherService.js';
 
 // TODO: POST Request with city name to retrieve weather data
-router.post('/', (req, res) => {
+router.post('/', async (req, res) => {
+
+  const cityName = req.body.cityName;
+
   // TODO: GET weather data from city name
+  const weatherData = await WeatherService.getWeatherForCity(cityName)
+
+
   // TODO: save city to search history
+
+
+  res.json(weatherData)
 });
 
 // TODO: GET search history
